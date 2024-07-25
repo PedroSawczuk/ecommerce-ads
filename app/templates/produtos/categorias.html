@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Ecommerce ADS - Categorias {% endblock %}
+
+{% block conteudo %}
+<article>
+    {% for c in categorias %}
+    <a href="{% url 'listarprodutos' c.slug %}" role="button" class="outline">
+        {{ c.nome }}
+    </a>
+    {% empty %}
+    <a href="{% url 'home' %}" role="button" class="outline">
+        Voltar
+    </a>
+    {% endfor %}
+</article>
+{% endblock %}

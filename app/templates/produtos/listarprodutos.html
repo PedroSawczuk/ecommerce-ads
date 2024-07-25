@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Ecommerce ADS - produtos{% endblock %}
+
+{% block conteudo %}
+<article>
+    <h2>
+        Produtos - Categoria
+        {% if categoria %}
+        {{ categoria.nome }}
+        {% else %}
+        Geral
+        {% endif %}
+    </h2>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in produtos %}
+            <tr>
+                <td>
+                    <img style="width: 100px;" src="{% if p.imagem %} {{p.imagem.url}}
+                                  {% else %} {% static 'image/sem-foto.jpg' %}
+                                  {% endif %}" alt="imagem de {{ p.nome }}">
+                </td>
+                <td><a href="{% url 'detailproduto' p.slug p.id %}">{{ p.nome }}</a></td>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.preco }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</article>
+{% endblock %}

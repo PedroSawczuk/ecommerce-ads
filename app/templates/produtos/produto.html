@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Meu Ecommerce - Categorias {% endblock %}
+
+{% block conteudo %}
+    <article>
+        <div>
+            <p id="localimg" style="text-align: center;">
+                <img width="300px" id="imgprod" src="{% if produto.imagem %} {{produto.imagem.url}}
+                                  {% else %} {% static 'imagens/notfound.jfif' %}
+                                  {% endif %}" alt="imagem de {{ produto.nome }}">
+            </p>
+            <div id="imggrande"></div>
+        </div>
+        <p style="display: block; margin: 0 auto; width: 60%;"> {{ produto.descricao }}</p>
+        <p style="text-align: center; padding: 1.15em 0; font-size: 1.5em;"> Preço: <strong>{{ produto.preco }}</strong></p>
+        <a href="" role="button"  class="success" style="display: block; margin: 0 auto;">adicionar ao carrinho</a>
+    </article>
+
+{% endblock %}
